@@ -11,6 +11,7 @@
         android:src="@drawable/madlibs"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp" />
 
@@ -21,14 +22,13 @@
         android:text="@string/welcome_text"
         android:layout_margin="30dp"
         android:textSize="17dp"
-        android:layout_toRightOf="@+id/madlipsmenu" />
+        android:layout_below="@+id/madlipsmenu" />
 
     <Button
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Start!"
         android:layout_below="@+id/welcome_text"
-        android:layout_toRightOf="@+id/madlipsmenu"
         android:onClick="gotoSecond"/>
 
 </RelativeLayout>

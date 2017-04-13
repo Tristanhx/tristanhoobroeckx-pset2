@@ -3,4 +3,6 @@
     <string name="welcome_text">Welcome to MadLips! In a moment your will be submitting a few
     words that we will be putting in a story! We won\'t tell you what story in order to keep it a
     surprise. Now press start!</string>
+    <string name="digits">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
 </resources>
