@@ -20,6 +20,6 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     protected void SubmitWord(View view){
-
+        
     }
 }
