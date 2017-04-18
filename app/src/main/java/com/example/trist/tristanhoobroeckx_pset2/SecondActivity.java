@@ -5,6 +5,7 @@ import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ public class SecondActivity extends AppCompatActivity {
     EditText text;
     Story storyBuilder;
     TextView counter;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +26,21 @@ public class SecondActivity extends AppCompatActivity {
 
         text = (EditText)findViewById(R.id.edittext);
         counter = (TextView) findViewById(R.id.counter);
+        button = (Button) findViewById(R.id.buttonsubmit);
 
 
         if (savedInstanceState != null){
-            storyBuilder = (Story) savedInstanceState.getSerializable("text");
+            storyBuilder = (Story) savedInstanceState.getSerializable("object");
             text.setHint(storyBuilder.getNextPlaceholder());
-            counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount()));
+            counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount())+" of "+
+                    Integer.toString(storyBuilder.getPlaceholderCount()));
         }
         else {
             try {
                 storyBuilder = new Story(getAssets().open("madlib0_simple.txt"));
                 text.setHint(storyBuilder.getNextPlaceholder());
-                counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount()));
+                counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount())+" of "+
+                Integer.toString(storyBuilder.getPlaceholderCount()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -45,25 +50,33 @@ public class SecondActivity extends AppCompatActivity {
 
     protected void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
-        outState.putSerializable("text", storyBuilder);
-//        outState.putString("hint", (String) text.getHint());
-//        outState.putInt("counter", storyBuilder.getPlaceholderRemainingCount());
+        outState.putSerializable("object", storyBuilder);
     }
 
     protected void gotoThird(){
+        String finished_story = storyBuilder.toString();
+
         Intent intent = new Intent(this, ThirdActivity.class);
+        intent.putExtra("storyextra", finished_story);
+
         startActivity(intent);
         finish();
     }
 
     protected void SubmitWord(View view){
-        if (storyBuilder.isFilledIn() != true){
+        if (storyBuilder.getPlaceholderRemainingCount() > 1){
             String word = text.getText().toString();
             storyBuilder.fillInPlaceholder(word);
             text.setHint(storyBuilder.getNextPlaceholder());
-            counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount()));
+            counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount())+" of "+
+                    Integer.toString(storyBuilder.getPlaceholderCount()));
+            text.setText("");
         }
-        else
+        else {
+            button.setText("Go to Story!");
+            String word = text.getText().toString();
+            storyBuilder.fillInPlaceholder(word);
             gotoThird();
+        }
     }
 }

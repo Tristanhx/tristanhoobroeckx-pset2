@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.trist.tristanhoobroeckx_pset2.SecondActivity">
 
+    <TextView
+        android:id="@+id/counter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"/>
+
     <EditText
         android:id="@+id/edittext"
         android:layout_width="match_parent"
@@ -13,7 +19,9 @@
         android:lines="1"
         android:digits="@string/digits"
         android:backgroundTint="@color/edittint"
-        android:textCursorDrawable="@null" />
+        android:layout_below="@+id/counter"
+        android:textCursorDrawable="@null"
+        android:hint="" />
 
     <Button
         android:layout_width="match_parent"
