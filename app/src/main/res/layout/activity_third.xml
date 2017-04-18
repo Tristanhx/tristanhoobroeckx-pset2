@@ -7,9 +7,22 @@
     tools:context="com.example.trist.tristanhoobroeckx_pset2.ThirdActivity">
 
     <TextView
+        android:id="@+id/banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Madlibs Story"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
         android:id="@+id/story"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text=""/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@id/banner"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        />
 
 </RelativeLayout>

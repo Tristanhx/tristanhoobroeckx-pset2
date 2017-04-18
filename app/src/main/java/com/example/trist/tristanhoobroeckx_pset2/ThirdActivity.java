@@ -19,7 +19,7 @@ public class ThirdActivity extends AppCompatActivity {
         receivedStory = intent.getStringExtra("storyextra");
 
         if (savedInstanceState != null){
-            storytext.setText("story");
+            storytext.setText(savedInstanceState.getString("story"));
         }
         else {
             storytext.setText(receivedStory);

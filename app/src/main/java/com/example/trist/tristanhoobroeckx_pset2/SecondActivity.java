@@ -1,5 +1,6 @@
 package com.example.trist.tristanhoobroeckx_pset2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,20 +65,25 @@ public class SecondActivity extends AppCompatActivity {
         finish();
     }
 
-    protected void SubmitWord(View view){
-        if (storyBuilder.getPlaceholderRemainingCount() > 1){
-            String word = text.getText().toString();
-            storyBuilder.fillInPlaceholder(word);
-            text.setHint(storyBuilder.getNextPlaceholder());
-            counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount())+" of "+
-                    Integer.toString(storyBuilder.getPlaceholderCount()));
-            text.setText("");
-        }
+    protected void SubmitWord(View view) {
+        if (text.getText().toString().trim().length() > 0) {
+            if (storyBuilder.getPlaceholderRemainingCount() > 1) {
+                String word = text.getText().toString();
+                storyBuilder.fillInPlaceholder(word);
+                text.setHint(storyBuilder.getNextPlaceholder());
+                counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount()) + " of " +
+                        Integer.toString(storyBuilder.getPlaceholderCount()));
+                text.setText("");
+            }
         else {
             button.setText("Go to Story!");
             String word = text.getText().toString();
             storyBuilder.fillInPlaceholder(word);
             gotoThird();
+            }
+        }
+        else {
+            Toast.makeText(this, "Fill in a word!", Toast.LENGTH_SHORT).show();
         }
     }
 }
