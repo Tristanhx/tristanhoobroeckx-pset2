@@ -16,6 +16,5 @@ public class FirstActivity extends AppCompatActivity {
     protected void gotoSecond(View view){
         Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
-        finish();
     }
 }

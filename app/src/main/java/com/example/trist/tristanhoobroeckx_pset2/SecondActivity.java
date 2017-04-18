@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -29,6 +30,8 @@ public class SecondActivity extends AppCompatActivity {
         text = (EditText)findViewById(R.id.edittext);
         counter = (TextView) findViewById(R.id.counter);
         button = (Button) findViewById(R.id.buttonsubmit);
+        Random rand = new Random();
+        int n = rand.nextInt(5);
 
 
         if (savedInstanceState != null){
@@ -39,7 +42,7 @@ public class SecondActivity extends AppCompatActivity {
         }
         else {
             try {
-                storyBuilder = new Story(getAssets().open("madlib0_simple.txt"));
+                storyBuilder = new Story(getAssets().open("madlib"+ n + ".txt"));
                 text.setHint(storyBuilder.getNextPlaceholder());
                 counter.setText(Integer.toString(storyBuilder.getPlaceholderRemainingCount())+" of "+
                 Integer.toString(storyBuilder.getPlaceholderCount()));
