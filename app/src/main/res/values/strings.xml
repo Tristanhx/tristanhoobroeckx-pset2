@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Madlips</string>
-    <string name="welcome_text">Welcome to MadLips! In a moment your will be submitting a few
+    <string name="app_name">Mad-Libs</string>
+    <string name="welcome_text">Welcome to Mad-Libs! In a moment your will be submitting a few
     words that we will be putting in a story! We won\'t tell you what story in order to keep it a
     surprise. Now press start!</string>
-    <string name="digits">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="digits">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ-\'</string>
 
 </resources>
